@@ -4,5 +4,6 @@ from .views import singuPpage
 
 
 urlpatterns = [
-    path('signuppage',singuPpage,name="signup_page")
+    path('signuppage',singuPpage,name="signup_page"),
+    # path('loginpage',loginpage,name="login_page"),
 ]
