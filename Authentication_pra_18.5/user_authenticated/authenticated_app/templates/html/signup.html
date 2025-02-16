@@ -3,10 +3,24 @@
 {% block content %}
 <h3>i am {{type}} page !!!!!!!!!!!</h3>
 
+{% if messages %}
+{% for m in messages %}
+  <small {% if m.tags %} class="{{m.tags}}" {% endif %} class="text-{{m.tags}}">{{m}}</small>
+{% endfor %}
+{% endif %}
+
+
 <div style ="width:50%; margin:auto;">
-    <form action="" method="POST" >
+    <form action="" method="POST" novalidate>
         {% csrf_token %}
-    {{form | crispy }}
+        {% for data  in form  %}
+        {{data.label_tag}}
+        <br>
+        {{data}}
+        <br>
+        {{data.errors | striptags}}
+        <br>
+        {% endfor %}
     <button class="btn btn-danger">submit</button>
    
     </form>
